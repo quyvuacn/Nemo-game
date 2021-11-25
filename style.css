@@ -64,7 +64,7 @@ image{
 .hide{
     background: #000;
     position: absolute;
-    top: calc(100% - 45px);
+    top: 670px;
     width: 450px;
     height: 300px;
     z-index: 10;
