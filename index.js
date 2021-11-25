@@ -25,7 +25,7 @@ animate = setInterval(function(){
 },50)
 
 //Ramdom img
-randomimg = setInterval(random,1000)
+randomimg = setInterval(random,800)
 function random(){
     let col = Math.floor(Math.random() * 6)*300
     let img = Math.floor(Math.random() * 15)+1
