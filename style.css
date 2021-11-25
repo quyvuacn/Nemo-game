@@ -1,0 +1,72 @@
+
+body{
+    display: block;
+    overflow: hidden;
+    touch-action: manipulation;
+}
+header{
+   text-align: center;
+   height: 20px;
+}
+#canvas{
+    width: 450px;
+    height: 650px;
+    overflow: hidden;
+    background-color: aqua;
+    margin: 0 auto;
+    display: flex;
+    
+}
+.chau{
+    width: 75px;
+    height: 65px;
+    position: relative;
+    top: calc(100% - 13px);
+    left: 0px;
+}
+.chau img{
+    position: absolute;
+    width: 100%;
+}
+.chau img:last-child{
+    transform: rotate(180deg);
+    top: -12px;
+    z-index: 1;
+}
+.chau img:first-child{
+    z-index: 3;
+}
+.defs {
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+.img{
+    transform: translateX(0px);
+    zoom: 0.25;
+    height: 260px;
+    width: 300px;
+    position: absolute;
+    z-index: 2;
+}
+image{
+    width: 300px;
+    height: 300px;
+}
+.heart image {
+    -webkit-clip-path: url(#heart-clip);
+            clip-path: url(#heart-clip);
+}
+/* .img2{
+    transform: translateX(300px);
+} */
+
+.hide{
+    background: #000;
+    position: absolute;
+    top: calc(100% - 45px);
+    width: 450px;
+    height: 300px;
+    z-index: 10;
+    background-color: white;
+}
