@@ -1,27 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" />
-    <title>Nemo</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-    <header>
-        <span id="diem">Điểm: 0</span>
-        <span id="heart">Heart: 5</span>
-    </header>
-    <div id="canvas">
-        <div class="chau">
-            <img src="./img/vong.jpg" alt="">
-            <img src="./img/vong.jpg" alt="">
-        </div>
-        <div class="hide"></div>      
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nemo Game</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <!-- Decorative floating hearts -->
+    <div class="floating-hearts" id="floating-hearts"></div>
+
+    <!-- Start Screen -->
+    <div id="start-screen" class="screen">
+      <h1>Nemo Game</h1>
+      <p class="game-description">
+        Hứng những trái tim rơi xuống để ghi điểm. Cố gắng đạt điểm cao nhất!
+      </p>
+      <div class="controls">
+        Di chuyển giỏ đựng bằng phím <span>← (trái)</span> và
+        <span>→ (phải)</span>
+      </div>
+      <button id="start-button">Bắt Đầu</button>
     </div>
 
-    <script src="./index.js"></script>
-</body>
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen hidden">
+      <div class="header">
+        <div id="score">Điểm: 0</div>
+        <div id="heart">Heart: 5</div>
+      </div>
+      <canvas id="gameCanvas"></canvas>
+      <div class="level-indicator">
+        Level: <span id="level-text">1</span>
+        <div class="level-bar">
+          <div class="level-progress" id="level-progress"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Game Over Screen -->
+    <div id="game-over-screen" class="screen hidden">
+      <h2>Game Over</h2>
+      <div id="final-score">0</div>
+      <div id="high-score-container">
+        High Score: <span id="high-score">0</span>
+      </div>
+      <button id="restart-button">Chơi Lại</button>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="catch-sound" src="sounds/catch.mp3"></audio>
+    <audio id="miss-sound" src="sounds/miss.mp3"></audio>
+    <audio id="bg-music" src="sounds/background.mp3" loop></audio>
+
+    <script src="game.js"></script>
+  </body>
 </html>
