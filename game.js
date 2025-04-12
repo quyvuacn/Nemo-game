@@ -401,12 +401,31 @@ function createFloatingHearts() {
 
 function createHeartCaughtEffect(x, y, isSpecial) {
   const container = document.getElementById("game-screen");
+  const canvas = document.getElementById("gameCanvas");
+  const canvasRect = canvas.getBoundingClientRect();
+
   const heartEffect = document.createElement("div");
   heartEffect.className = "heart-caught";
   heartEffect.innerHTML = "❤️";
-  heartEffect.style.left = `${x + GAME_CONFIG.HEART_SIZE / 2}px`;
-  heartEffect.style.top = `${y + GAME_CONFIG.HEART_SIZE / 2}px`;
-  heartEffect.style.fontSize = "60px";
+
+  const scaleX = canvasRect.width / GAME_CONFIG.CANVAS_WIDTH;
+  const scaleY = canvasRect.height / GAME_CONFIG.CANVAS_HEIGHT;
+
+  const catchY = GAME_CONFIG.CANVAS_HEIGHT - GAME_CONFIG.BASKET_HEIGHT;
+
+  const randomX =
+    (Math.random() > 0.5 ? -1 : 1) *
+    Math.random() *
+    GAME_CONFIG.HEART_SIZE *
+    0.2;
+
+  heartEffect.style.position = "absolute";
+  heartEffect.style.left = `${x * scaleX + randomX}px`;
+  heartEffect.style.top = `${catchY * scaleY}px`;
+  heartEffect.style.fontSize = `${GAME_CONFIG.HEART_SIZE * 0.6 * scaleX}px`;
+  heartEffect.style.transform = "translate(-50%, -50%)";
+  heartEffect.style.pointerEvents = "none";
+
   if (isSpecial) {
     heartEffect.style.color = "#FFD700";
   }
