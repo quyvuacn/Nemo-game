@@ -6,14 +6,14 @@ const GAME_CONFIG = {
   BASKET_MOVE_DISTANCE: 0,
   BASKET_START_POSITION: 0,
   BASKET_MAX_POSITION: 0,
-  BASKET_WIDTH: 75,
-  BASKET_HEIGHT: 60,
+  BASKET_WIDTH_RATIO: 1 / 6,
+  BASKET_HEIGHT_RATIO: 1 / 9,
+  HEART_SIZE_RATIO: 1 / 6,
 
   HEART_SPAWN_INTERVAL: 800,
   HEART_COLUMNS: 6,
   HEART_VARIANTS: 15,
   SPECIAL_HEART_CHANCE: 0.1,
-  HEART_SIZE: 80,
 
   NORMAL_POINTS: 10,
   SPECIAL_POINTS: 50,
@@ -190,14 +190,28 @@ class Heart {
 
 function initCanvas() {
   canvas = document.getElementById("gameCanvas");
-  canvas.width = Math.min(450, window.innerWidth * 0.9);
-  canvas.height = Math.min(650, window.innerHeight * 0.7);
+  const minWidth = Math.min(480, window.innerWidth * 0.9);
+  const minHeight = Math.min(650, window.innerHeight * 0.7);
+
+  canvas.width = minWidth - minWidth % (1 / GAME_CONFIG.BASKET_WIDTH_RATIO);
+  canvas.height = minHeight - minHeight % (1 / GAME_CONFIG.BASKET_HEIGHT_RATIO);
+
   ctx = canvas.getContext("2d");
 
   GAME_CONFIG.CANVAS_WIDTH = canvas.width;
   GAME_CONFIG.CANVAS_HEIGHT = canvas.height;
-  GAME_CONFIG.BASKET_MAX_POSITION = canvas.width - GAME_CONFIG.BASKET_WIDTH;
-  GAME_CONFIG.BASKET_MOVE_DISTANCE = canvas.width / GAME_CONFIG.HEART_COLUMNS;
+
+  GAME_CONFIG.BASKET_WIDTH =
+    GAME_CONFIG.CANVAS_WIDTH * GAME_CONFIG.BASKET_WIDTH_RATIO;
+  GAME_CONFIG.BASKET_HEIGHT =
+    GAME_CONFIG.CANVAS_HEIGHT * GAME_CONFIG.BASKET_HEIGHT_RATIO;
+  GAME_CONFIG.HEART_SIZE =
+    GAME_CONFIG.CANVAS_WIDTH * GAME_CONFIG.HEART_SIZE_RATIO;
+  GAME_CONFIG.BASKET_MAX_POSITION =
+    GAME_CONFIG.CANVAS_WIDTH - GAME_CONFIG.BASKET_WIDTH;
+  GAME_CONFIG.BASKET_MOVE_DISTANCE =
+    GAME_CONFIG.CANVAS_WIDTH / GAME_CONFIG.HEART_COLUMNS;
+  GAME_CONFIG.BASKET_START_POSITION = 0;
 
   canvas.addEventListener("touchmove", (event) => {
     event.preventDefault();
@@ -421,7 +435,7 @@ function showScoreIncrement(x, y, points) {
 }
 
 function updateUI() {
-  document.getElementById("score").textContent = `Điểm: ${score}`;
+  document.getElementById("score").textContent = `Score: ${score}`;
   document.getElementById("heart").textContent = `Heart: ${hearts}`;
   document.getElementById("level-text").textContent = currentLevel;
 }
@@ -473,7 +487,6 @@ function gameOver() {
   document.getElementById("game-over-screen").classList.remove("hidden");
   document.getElementById("final-score").textContent = score;
   document.getElementById("high-score").textContent = highScore;
-  document.getElementById("bg-music").pause();
 }
 
 document.addEventListener("keydown", (event) => {
