@@ -358,7 +358,9 @@ h2 {
   body {
     padding: 10px 0;
     min-height: 100dvh;
-    align-items: flex-start;
+    align-items: center;
+    display: flex;
+    justify-content: center;
   }
 
   .header {
@@ -383,8 +385,8 @@ h2 {
   }
 
   #gameCanvas {
-    height: 65vh;
-    max-height: 65vh;
+    height: 60vh;
+    max-height: 60vh;
   }
 
   h1 {
