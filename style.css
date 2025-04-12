@@ -16,11 +16,11 @@ body {
 
 .screen {
   text-align: center;
-  padding: 10px; /* Giảm padding cho màn hình nhỏ */
+  padding: 10px;
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 20px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-  max-width: 100vw; /* Giới hạn chiều rộng tối đa */
+  max-width: 100vw;
   position: relative;
   overflow: hidden;
 }
@@ -85,7 +85,7 @@ body {
   backdrop-filter: blur(5px);
   border-radius: 15px;
   margin-bottom: 15px;
-  font-size: 1em; /* Giảm kích thước chữ */
+  font-size: 1em;
   font-weight: bold;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
@@ -130,9 +130,9 @@ body {
 }
 
 #gameCanvas {
-  width: 100%; /* Canvas chiếm toàn bộ chiều rộng */
-  height: auto; /* Chiều cao tự điều chỉnh */
-  max-height: 80vh; /* Giới hạn chiều cao tối đa */
+  width: 100%;
+  height: auto;
+  max-height: 80vh;
   border: none;
   border-radius: 15px;
   background-color: white;
@@ -140,7 +140,7 @@ body {
 }
 
 button {
-  padding: 10px 20px; /* Giảm kích thước nút */
+  padding: 10px 20px;
   font-size: 1em;
   background: linear-gradient(to right, #8c52ff, #5ce1e6);
   color: white;
@@ -374,6 +374,6 @@ h2 {
   }
 
   #gameCanvas {
-    height: 80vh; /* Đảm bảo canvas không quá cao */
+    height: 60vh;
   }
 }

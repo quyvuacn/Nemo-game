@@ -1,4 +1,4 @@
-const isMobile = window.innerWidth < 480;
+const isMobile = window.innerWidth < 600;
 
 const GAME_CONFIG = {
   CANVAS_WIDTH: 0,
@@ -192,7 +192,7 @@ class Heart {
 
 function initCanvas() {
   canvas = document.getElementById("gameCanvas");
-  const minWidth = Math.min(480, window.innerWidth * 0.9);
+  const minWidth = Math.min(600, window.innerWidth * 0.9);
   const minHeight = Math.min(650, window.innerHeight * 0.7);
 
   canvas.width = minWidth - (minWidth % (1 / GAME_CONFIG.BASKET_WIDTH_RATIO));
@@ -508,23 +508,23 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-document
-  .getElementById("left-button")
-  .addEventListener("touchstart", (event) => {
-    event.preventDefault();
-    if (basketPosition > 0) {
-      basketPosition -= GAME_CONFIG.BASKET_MOVE_DISTANCE;
-    }
-  });
+// document
+//   .getElementById("left-button")
+//   .addEventListener("touchstart", (event) => {
+//     event.preventDefault();
+//     if (basketPosition > 0) {
+//       basketPosition -= GAME_CONFIG.BASKET_MOVE_DISTANCE;
+//     }
+//   });
 
-document
-  .getElementById("right-button")
-  .addEventListener("touchstart", (event) => {
-    event.preventDefault();
-    if (basketPosition < GAME_CONFIG.BASKET_MAX_POSITION) {
-      basketPosition += GAME_CONFIG.BASKET_MOVE_DISTANCE;
-    }
-  });
+// document
+//   .getElementById("right-button")
+//   .addEventListener("touchstart", (event) => {
+//     event.preventDefault();
+//     if (basketPosition < GAME_CONFIG.BASKET_MAX_POSITION) {
+//       basketPosition += GAME_CONFIG.BASKET_MOVE_DISTANCE;
+//     }
+//   });
 
 window.addEventListener("load", () => {
   initCanvas();
