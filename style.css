@@ -373,6 +373,10 @@ h2 {
     font-size: 1em;
   }
 
+  #game-screen {
+    margin-bottom: 80px;
+  }
+
   #gameCanvas {
     height: 60vh;
   }
