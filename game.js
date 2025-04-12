@@ -1,3 +1,5 @@
+const isMobile = window.innerWidth < 480;
+
 const GAME_CONFIG = {
   CANVAS_WIDTH: 0,
   CANVAS_HEIGHT: 0,
@@ -7,12 +9,12 @@ const GAME_CONFIG = {
   BASKET_START_POSITION: 0,
   BASKET_MAX_POSITION: 0,
   BASKET_WIDTH_RATIO: 1 / 6,
-  BASKET_HEIGHT_RATIO: 1 / 9,
+  BASKET_HEIGHT_RATIO: isMobile ? 1 / 10 : 1 / 9,
   HEART_SIZE_RATIO: 1 / 6,
 
   HEART_SPAWN_INTERVAL: 800,
   HEART_COLUMNS: 6,
-  HEART_VARIANTS: 15,
+  HEART_VARIANTS: 10,
   SPECIAL_HEART_CHANCE: 0.1,
 
   NORMAL_POINTS: 10,
@@ -193,8 +195,9 @@ function initCanvas() {
   const minWidth = Math.min(480, window.innerWidth * 0.9);
   const minHeight = Math.min(650, window.innerHeight * 0.7);
 
-  canvas.width = minWidth - minWidth % (1 / GAME_CONFIG.BASKET_WIDTH_RATIO);
-  canvas.height = minHeight - minHeight % (1 / GAME_CONFIG.BASKET_HEIGHT_RATIO);
+  canvas.width = minWidth - (minWidth % (1 / GAME_CONFIG.BASKET_WIDTH_RATIO));
+  canvas.height =
+    minHeight - (minHeight % (1 / GAME_CONFIG.BASKET_HEIGHT_RATIO));
 
   ctx = canvas.getContext("2d");
 
@@ -436,7 +439,7 @@ function showScoreIncrement(x, y, points) {
 
 function updateUI() {
   document.getElementById("score").textContent = `Score: ${score}`;
-  document.getElementById("heart").textContent = `Heart: ${hearts}`;
+  document.getElementById("heart").textContent = `${hearts}`;
   document.getElementById("level-text").textContent = currentLevel;
 }
 

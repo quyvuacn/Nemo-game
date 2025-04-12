@@ -56,6 +56,7 @@ body {
 #game-over-screen {
   width: 450px;
   animation: fadeIn 0.8s ease-out;
+  margin: 12px;
 }
 
 #game-screen {
@@ -233,6 +234,7 @@ h2 {
   height: 100%;
   pointer-events: none;
   z-index: -1;
+  margin: 0 auto;
 }
 
 .floating-heart {
